@@ -1,563 +1,519 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rehan Sandhi | Digital Ecosystem</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>RS Digital Ecosystem | Rehan Sandhi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <style>
-        /* Cohesive CSS Variables */
-        :root {
-            --bg-base: #030712;
-            --grid-line: rgba(3, 218, 198, 0.07);
-            --accent-cyan: #03dac6;
-            --accent-magenta: #ff0055;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --card-bg: rgba(15, 23, 42, 0.6);
-            --card-border: rgba(3, 218, 198, 0.2);
-        }
+    :root {
+      --bg-deep: #0a0c0f;
+      --surface: #14171c;
+      --border-light: rgba(255, 255, 255, 0.08);
+      --accent-primary: #a78bfa; /* violet-purple */
+      --accent-secondary: #38bdf8; /* sky blue */
+      --accent-glow: rgba(167, 139, 250, 0.5);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --card-bg: rgba(20, 23, 28, 0.8);
+      --card-hover-bg: rgba(30, 35, 42, 0.9);
+      --shadow-glow: 0 20px 35px -10px rgba(0,0,0,0.7);
+      --transition-smooth: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg-deep);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      background-image: 
+        radial-gradient(circle at 30% 20%, rgba(167, 139, 250, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 80% 70%, rgba(56, 189, 248, 0.06) 0%, transparent 50%),
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 2px, transparent 2px, transparent 8px);
+      background-attachment: fixed;
+    }
 
-        body {
-            font-family: 'Rajdhani', sans-serif;
-            background-color: var(--bg-base);
-            color: var(--text-primary);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
-            
-            /* Layered Background */
-            background-image: 
-                radial-gradient(circle at 50% 0%, rgba(3, 218, 198, 0.15) 0%, transparent 60%),
-                linear-gradient(var(--grid-line) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-            background-size: 100% 100%, 40px 40px, 40px 40px;
-            background-position: center top;
-            background-attachment: fixed;
-        }
+    /* main container */
+    .ecosystem {
+      width: 100%;
+      max-width: 750px;
+      margin: 1rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
 
-        /* Top Navigation Bar */
-        .top-navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 60px;
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--card-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-            z-index: 1000;
-        }
+    /* header profile */
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
 
-        .nav-btn {
-            background: none;
-            border: none;
-            color: var(--accent-cyan);
-            font-size: 20px;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-family: 'Share Tech Mono', monospace;
-        }
+    .avatar-glow {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      border-radius: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 15px 30px -8px rgba(167, 139, 250, 0.4);
+      transform: rotate(3deg);
+      transition: transform 0.3s ease;
+      border: 2px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(8px);
+    }
+    .avatar-glow i {
+      font-size: 48px;
+      color: white;
+      filter: drop-shadow(0 4px 6px black);
+    }
 
-        .nav-btn:hover {
-            color: #fff;
-            text-shadow: 0 0 10px var(--accent-cyan);
-        }
+    .profile h1 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.5rem;
+      font-weight: 500;
+      letter-spacing: -0.5px;
+      background: linear-gradient(to right, #e2e8f0, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.3rem;
+    }
 
-        #back-btn {
-            visibility: hidden; 
-        }
+    .badge {
+      background: rgba(167, 139, 250, 0.15);
+      border: 1px solid rgba(167, 139, 250, 0.35);
+      padding: 0.4rem 1.4rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #cbd5e1;
+      backdrop-filter: blur(10px);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      letter-spacing: 0.3px;
+    }
+    .badge i {
+      color: var(--accent-primary);
+    }
 
-        .app-title {
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 18px;
-            color: var(--text-primary);
-            letter-spacing: 1px;
-        }
+    /* cards grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+    }
 
-        /* Dropdown Menu */
-        .dropdown {
-            position: relative;
-        }
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(18px);
+      border: 1px solid var(--border-light);
+      border-radius: 24px;
+      padding: 1.3rem 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: var(--transition-smooth);
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--text-main);
+      box-shadow: 0 10px 20px -10px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+    }
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            top: 40px;
-            background: rgba(15, 23, 42, 0.95);
-            min-width: 220px;
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-            z-index: 1001;
-        }
+    .card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));
+      border-radius: 0 8px 8px 0;
+      transform: scaleY(0.5);
+      opacity: 0;
+      transition: var(--transition-smooth);
+    }
 
-        .dropdown.active .dropdown-content {
-            display: block;
-            animation: slideDownFade 0.3s ease forwards;
-        }
+    .card:hover {
+      background: var(--card-hover-bg);
+      border-color: rgba(167, 139, 250, 0.4);
+      transform: translateY(-5px);
+      box-shadow: 0 25px 35px -12px rgba(167, 139, 250, 0.25);
+    }
+    .card:hover::after {
+      opacity: 1;
+      transform: scaleY(1);
+    }
 
-        .dropdown-content a {
-            color: var(--text-primary);
-            padding: 12px 16px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 600;
-            font-size: 16px;
-            transition: 0.3s;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
+    .card-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      color: var(--accent-primary);
+      transition: 0.3s;
+      border: 1px solid rgba(255,255,255,0.1);
+      flex-shrink: 0;
+    }
 
-        .dropdown-content a:hover {
-            background: rgba(3, 218, 198, 0.1);
-            color: var(--accent-cyan);
-            padding-left: 20px;
-        }
+    .card:hover .card-icon {
+      background: rgba(167, 139, 250, 0.2);
+      color: white;
+      box-shadow: 0 0 18px rgba(167, 139, 250, 0.5);
+      border-color: rgba(255,255,255,0.3);
+    }
 
-        /* Main View Container */
-        #main-view {
-            display: none; /* Pehle ise chhipa dein taaki loader dikhe */
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 100px 20px 40px;
-            transition: opacity 0.3s;
-        }
+    .card-info {
+      flex: 1;
+    }
+    .card-info h3 {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 0.2rem;
+      color: #f8fafc;
+    }
+    .card-info span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: block;
+      font-weight: 400;
+    }
 
-        /* Loading Screen CSS */
-        #loader-view {
-            display: flex; /* Page start par ise visible rakhein */
-            position: fixed;
-            top: 60px;
-            left: 0;
-            width: 100%;
-            height: calc(100vh - 60px);
-            background-color: var(--bg-base); /* Theme se match karne ke liye */
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 600;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-        }
+    .arrow {
+      color: rgba(255,255,255,0.4);
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+    .card:hover .arrow {
+      color: var(--accent-secondary);
+      transform: translateX(4px);
+    }
 
-        /* Iframe View */
-        #iframe-view {
-            display: none;
-            position: fixed;
-            top: 60px;
-            left: 0;
-            width: 100%;
-            height: calc(100vh - 60px);
-            background: var(--bg-base);
-            z-index: 500;
-        }
+    /* bottom links / extras */
+    .extra-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 0.8rem;
+    }
+    .pill {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.5rem 1.2rem;
+      border-radius: 30px;
+      color: #cbd5e1;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition-smooth);
+      text-decoration: none;
+      backdrop-filter: blur(8px);
+    }
+    .pill i {
+      color: var(--accent-secondary);
+    }
+    .pill:hover {
+      background: rgba(167, 139, 250, 0.15);
+      border-color: var(--accent-primary);
+      color: white;
+    }
 
-        #app-frame {
-            width: 100%;
-            height: 100%;
-            border: none;
-            background: #fff;
-        }
+    hr {
+      border: 0.5px solid rgba(255,255,255,0.06);
+      margin: 0.5rem 0 1rem;
+    }
 
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #333;
-            border-top: 5px solid #00E676;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 20px;
+      background: white;
+    }
 
-                #loader-view h1, #loader-view h2 {
-            font-family: 'Share Tech Mono', monospace; /* Font ko baaki app jaisa premium banaya */
-            margin: 10px 0;
-            text-align: center; /* Ye text ko hamesha center rakhega */
-            padding: 0 15px; /* Mobile par edges se text ko door rakhega */
-        }
+    #appFrameContainer {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0a0c0f;
+      z-index: 1000;
+      flex-direction: column;
+    }
 
-        #loader-view h1 {
-            font-size: 24px;
-            color: var(--accent-cyan);
-        }
+    .frame-header {
+      display: flex;
+      align-items: center;
+      padding: 0.8rem 1.2rem;
+      background: #14171c;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      gap: 1rem;
+    }
+    .back-btn {
+      background: rgba(255,255,255,0.05);
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .back-btn:hover {
+      background: rgba(167,139,250,0.3);
+    }
+    .frame-url {
+      color: #94a3b8;
+      font-family: monospace;
+      font-size: 0.9rem;
+    }
 
-        #loader-view h2 {
-            font-size: 18px;
-            color: var(--text-secondary);
-        }
+    .frame-body {
+      flex: 1;
+      background: #000;
+    }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Profile Header Area */
-        .profile-container {
-            text-align: center;
-            margin-bottom: 50px;
-            opacity: 0;
-            animation: slideDownFade 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .avatar-box {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 20px;
-            border-radius: 30%;
-            background: linear-gradient(135deg, var(--bg-base), #1e293b);
-            border: 2px solid var(--accent-cyan);
-            box-shadow: 0 0 30px rgba(3, 218, 198, 0.3), inset 0 0 20px rgba(3, 218, 198, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            transform: rotate(45deg);
-        }
-
-        .avatar-box i {
-            transform: rotate(-45deg);
-            font-size: 50px;
-            color: var(--accent-cyan);
-            text-shadow: 0 0 15px var(--accent-cyan);
-        }
-
-        h1 {
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 36px;
-            letter-spacing: 2px;
-            color: var(--text-primary);
-            margin-bottom: 5px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        }
-
-        .tagline {
-            font-size: 18px;
-            color: var(--accent-cyan);
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* Links Container */
-        .links-wrapper {
-            width: 100%;
-            max-width: 550px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        /* Individual Link Card */
-        .link-card {
-            display: flex;
-            align-items: center;
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--card-border);
-            padding: 20px 25px;
-            border-radius: 16px;
-            text-decoration: none;
-            color: var(--text-primary);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            cursor: pointer;
-            
-            opacity: 0;
-            transform: translateY(40px);
-            animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .link-card:nth-child(1) { animation-delay: 0.3s; }
-        .link-card:nth-child(2) { animation-delay: 0.6s; }
-        .link-card:nth-child(3) { animation-delay: 0.9s; }
-        .link-card:nth-child(4) { animation-delay: 1.2s; }
-        .link-card:nth-child(5) { animation-delay: 1.5s; }
-        .link-card:nth-child(6) { animation-delay: 1.8s; }
-
-        .link-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-cyan);
-            box-shadow: 0 10px 30px rgba(3, 218, 198, 0.15);
-            background: rgba(3, 218, 198, 0.05);
-        }
-
-        .link-card::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 4px;
-            background: var(--accent-cyan);
-            transform: scaleY(0);
-            transition: transform 0.4s ease;
-            transform-origin: bottom;
-        }
-
-        .link-card:hover::before {
-            transform: scaleY(1);
-        }
-
-        .icon-wrapper {
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            margin-right: 20px;
-            color: var(--text-primary);
-            transition: 0.4s;
-        }
-
-        .link-card:hover .icon-wrapper {
-            background: var(--accent-cyan);
-            color: var(--bg-base);
-            box-shadow: 0 0 15px var(--accent-cyan);
-            border-color: var(--accent-cyan);
-        }
-
-        .text-content {
-            flex: 1;
-        }
-
-        .text-content h2 {
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 20px;
-            margin-bottom: 4px;
-            letter-spacing: 0.5px;
-        }
-
-        .text-content p {
-            font-size: 15px;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        .arrow-icon {
-            font-size: 20px;
-            color: var(--text-secondary);
-            transition: 0.4s;
-            transform: translateX(0);
-        }
-
-        .link-card:hover .arrow-icon {
-            color: var(--accent-cyan);
-            transform: translateX(5px);
-        }
-
-        @keyframes slideDownFade {
-            0% { opacity: 0; transform: translateY(-30px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideUpFade {
-            0% { opacity: 0; transform: translateY(40px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Special Styling for Noor Card */
-        .card-noor:hover .icon-wrapper {
-            background: var(--accent-magenta);
-            color: #fff;
-            box-shadow: 0 0 15px var(--accent-magenta);
-            border-color: var(--accent-magenta);
-        }
-        .card-noor:hover::before {
-            background: var(--accent-magenta);
-        }
-        .card-noor:hover .arrow-icon {
-            color: var(--accent-magenta);
-        }
-        .external-icon-small {
-            margin-left: auto;
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-    </style>
+    @media (max-width: 480px) {
+      .profile h1 {
+        font-size: 2rem;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="ecosystem" id="mainEcosystem">
+    <!-- profile -->
+    <div class="profile">
+      <div class="avatar-glow">
+        <i class="fas fa-cube"></i>
+      </div>
+      <h1>REHAN SANDHI</h1>
+      <div class="badge">
+        <i class="fas fa-circle-nodes"></i> digital ecosystem
+      </div>
+    </div>
 
-    <div class="top-navbar">
-        <button class="nav-btn" id="back-btn" onclick="goBack()">
-            <i class="fas fa-arrow-left"></i>
-        </button>
+    <!-- main grid with updated links -->
+    <div class="grid">
+      <!-- RS Chat (GhostLine) -->
+      <div class="card" data-url="https://rs-181.github.io/gl">
+        <div class="card-icon"><i class="fas fa-ghost"></i></div>
+        <div class="card-info">
+          <h3>RS Chat</h3>
+          <span>GhostLine · secure rooms</span>
+        </div>
+        <i class="fas fa-arrow-right arrow"></i>
+      </div>
+      <!-- RS App Store -->
+      <div class="card" data-url="https://rs-appstore.blogspot.com">
+        <div class="card-icon"><i class="fab fa-google-play"></i></div>
+        <div class="card-info">
+          <h3>RS App Store</h3>
+          <span>Premium web apps</span>
+        </div>
+        <i class="fas fa-arrow-right arrow"></i>
+      </div>
+      <!-- RS Blog -->
+      <div class="card" data-url="https://rehan-sandhi.blogspot.com">
+        <div class="card-icon"><i class="fas fa-blog"></i></div>
+        <div class="card-info">
+          <h3>RS Blog</h3>
+          <span>Updates & milestones</span>
+        </div>
+        <i class="fas fa-arrow-right arrow"></i>
+      </div>
+      <!-- RS Portfolio -->
+      <div class="card" data-url="https://rehansandhi181.blogspot.com">
+        <div class="card-icon"><i class="fas fa-user-astronaut"></i></div>
+        <div class="card-info">
+          <h3>RS Portfolio</h3>
+          <span>Professional work</span>
+        </div>
+        <i class="fas fa-arrow-right arrow"></i>
+      </div>
+      <!-- RS Game 2048 -->
+      <div class="card" data-url="https://amrutam-water.netlify.app/rs.html">
+        <div class="card-icon"><i class="fas fa-puzzle-piece"></i></div>
+        <div class="card-info">
+          <h3>RS Game (2048)</h3>
+          <span>Classic number puzzle</span>
+        </div>
+        <i class="fas fa-arrow-right arrow"></i>
+      </div>
+      <!-- RS Game Aastin-Ka-Sanp -->
+      <div class="card" data-url="https://rs-181.github.io/Aastin-Ka-Sanp/">
+        <div class="card-icon"><i class="fas fa-dice-d6"></i></div>
+        <div class="card-info">
+          <h3>Aastin-Ka-Sanp</h3>
+          <span>Snake & ladder game</span>
+        </div>
+        <i class="fas fa-arrow-right arrow"></i>
+      </div>
+      <!-- RS OS -->
+      <div class="card" data-url="https://rs-181.github.io/rs-os/">
+        <div class="card-icon"><i class="fas fa-desktop"></i></div>
+        <div class="card-info">
+          <h3>RS OS</h3>
+          <span>Web desktop experience</span>
+        </div>
+        <i class="fas fa-arrow-right arrow"></i>
+      </div>
+      <!-- RS Digital Pay -->
+      <div class="card" data-url="https://rs-digitle-pay.netlify.app/">
+        <div class="card-icon"><i class="fas fa-credit-card"></i></div>
+        <div class="card-info">
+          <h3>RS Digital Pay</h3>
+          <span>Fast payments</span>
+        </div>
+        <i class="fas fa-arrow-right arrow"></i>
+      </div>
+      <!-- RS Browser -->
+      <div class="card" data-url="https://rs-browser.netlify.app">
+        <div class="card-icon"><i class="fas fa-globe"></i></div>
+        <div class="card-info">
+          <h3>RS Browser</h3>
+          <span>Lightweight browser</span>
+        </div>
+        <i class="fas fa-arrow-right arrow"></i>
+      </div>
+      <!-- RS Certificate (bonus) -->
+      <div class="card" data-url="https://rs-181.github.io/rs-certificate/">
+        <div class="card-icon"><i class="fas fa-award"></i></div>
+        <div class="card-info">
+          <h3>RS Certificate</h3>
+          <span>Official credentials</span>
+        </div>
+        <i class="fas fa-arrow-right arrow"></i>
+      </div>
+    </div>
+
+    <!-- extra quick links -->
+    <div class="extra-links">
+      <a href="#" class="pill" id="openChatDirect"><i class="fas fa-comment-dots"></i> RS Chat</a>
+      <a href="#" class="pill" id="openStoreDirect"><i class="fas fa-store"></i> App Store</a>
+      <a href="#" class="pill" id="openPortfolioDirect"><i class="fas fa-id-card"></i> Portfolio</a>
+    </div>
+    <hr>
+    <div style="text-align: center; font-size: 0.75rem; color: #64748b; margin-top: 0.5rem;">
+      RS Digital Ecosystem · Rehan Sandhi <br> © 2026 ALL RIGHTS RESERVED
+    </div>
+  </div>
+
+  <!-- iframe container -->
+  <div id="appFrameContainer">
+    <div class="frame-header">
+      <button class="back-btn" id="closeFrameBtn"><i class="fas fa-times"></i></button>
+      <span class="frame-url" id="frameUrlDisplay">loading...</span>
+    </div>
+    <div class="frame-body">
+      <iframe id="appIframe" src="" allow="cross-origin-isolated" sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals"></iframe>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const mainView = document.getElementById('mainEcosystem');
+      const frameContainer = document.getElementById('appFrameContainer');
+      const appIframe = document.getElementById('appIframe');
+      const frameUrlDisplay = document.getElementById('frameUrlDisplay');
+      const closeBtn = document.getElementById('closeFrameBtn');
+
+      // Function to open link in iframe
+      function openInFrame(url, displayName = '') {
+        if (!url) return;
+        // Show frame container
+        frameContainer.style.display = 'flex';
+        mainView.style.display = 'none';
+        appIframe.src = url;
+        frameUrlDisplay.textContent = displayName || url;
         
-        <div class="app-title">RS digital Ecosystem</div>
+        // scroll to top if needed
+        window.scrollTo(0, 0);
+      }
 
-        <div class="dropdown" id="menu-dropdown">
-            <button class="nav-btn" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="#" onclick="openLink('https://rs-appstore.blogspot.com'); return false;"><i class="fab fa-google-play"></i> RS App Store</a>
-                <a href="#" onclick="openLink('https://rehan-sandhi.blogspot.com'); return false;"><i class="fas fa-rss"></i> Verified Blog</a>
-                <a href="#" onclick="openLink('https://rehansandhi181.blogspot.com'); return false;"><i class="fas fa-user-tie"></i> Official Portfolio</a>
-                <a href="#" onclick="openLink('https://rs-digitle-pay.netlify.app'); return false;"><i class="fas fa-credit-card"></i> RS Digital Pay</a>
-                <a href="#" onclick="openLink('https://rsandhi37-hash.github.io/ghostline/'); return false;"><i class="fas fa-ghost"></i> GhostLine</a>
-                <a href="#" onclick="openLink('https://rsandhi37-hash.github.io/rs-certificate/'); return false;"><i class="fas fa-award"></i> RS Certificate</a>
-            </div>
-        </div>
-    </div>
+      // Close frame and return to main view
+      function closeFrame() {
+        frameContainer.style.display = 'none';
+        mainView.style.display = 'block';
+        appIframe.src = '';
+        frameUrlDisplay.textContent = '';
+      }
 
-    <div id="main-view">
-        <div class="profile-container">
-            <div class="avatar-box">
-                <i class="fas fa-terminal"></i>
-            </div>
-            <h1>REHAN SANDHI</h1>
-            <div class="tagline">Digital Ecosystem</div>
-        </div>
+      // Attach event to close button
+      closeBtn.addEventListener('click', closeFrame);
 
-        <div class="links-wrapper">
-            <div class="link-card" onclick="openLink('https://rs-appstore.blogspot.com')">
-                <div class="icon-wrapper"><i class="fab fa-google-play"></i></div>
-                <div class="text-content">
-                    <h2>RS App Store</h2>
-                    <p>Download my premium web applications</p>
-                </div>
-                <i class="fas fa-chevron-right arrow-icon"></i>
-            </div>
-
-            <div class="link-card" onclick="openLink('https://rehan-sandhi.blogspot.com')">
-                <div class="icon-wrapper"><i class="fas fa-rss"></i></div>
-                <div class="text-content">
-                    <h2>Verified Blog</h2>
-                    <p>Stay updated with my latest milestones</p>
-                </div>
-                <i class="fas fa-chevron-right arrow-icon"></i>
-            </div>
-
-            <div class="link-card" onclick="openLink('https://rehansandhi181.blogspot.com')">
-                <div class="icon-wrapper"><i class="fas fa-user-tie"></i></div>
-                <div class="text-content">
-                    <h2>Official Portfolio</h2>
-                    <p>Explore my professional work & skills</p>
-                </div>
-                <i class="fas fa-chevron-right arrow-icon"></i>
-            </div>
-
-            <div class="link-card" onclick="openLink('https://rs-digitle-pay.netlify.app')">
-                <div class="icon-wrapper"><i class="fas fa-credit-card"></i></div>
-                <div class="text-content">
-                    <h2>RS Digitle Pay</h2>
-                    <p>Secure & fast digital payments platform</p>
-                </div>
-                <i class="fas fa-chevron-right arrow-icon" style="font-size: 16px;"></i>
-                </div>
-            <div class="link-card" onclick="openLink('https://rsandhi37-hash.github.io/ghostline/')">
-                <div class="icon-wrapper"><i class="fas fa-ghost"></i></div>
-                <div class="text-content">
-                    <h2>GhostLine</h2>
-                    <p>Anonymous, ephemeral & secure chat rooms</p>
-                </div>
-                <i class="fas fa-chevron-right arrow-icon" style="font-size: 16px;"></i>
-                </div>
-            <div class="link-card" onclick="openLink('https://rsandhi37-hash.github.io/rs-certificate/')">
-                <div class="icon-wrapper"><i class="fas fa-award"></i></div>
-                <div class="text-content">
-                    <h2>RS Certificate</h2>
-                    <p>Get your official RS Ecosystem certificate</p>
-                </div>
-                <i class="fas fa-chevron-right arrow-icon" style="font-size: 16px;"></i>
-                </div>
-        </div>
-    </div>
-
-    <div id="loader-view">
-        <div class="spinner"></div>
-        <h1>Welcome To RS Digitle Ecosystem</h1>
-        <h2>Loading...</h2>
-    </div>
-
-    <div id="iframe-view">
-        <iframe id="app-frame" src=""></iframe>
-    </div>
-
-    <script>
-        // Variables ko sirf ek hi baar yahan define karna hai
-        const mainView = document.getElementById('main-view');
-        const iframeView = document.getElementById('iframe-view');
-        const loaderView = document.getElementById('loader-view');
-        const appFrame = document.getElementById('app-frame');
-        const backBtn = document.getElementById('back-btn');
-        const dropdown = document.getElementById('menu-dropdown');
-
-        // Page Start Loader Logic
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                loaderView.style.display = 'none'; 
-                mainView.style.display = 'flex';   
-                const welcomeMsg = document.querySelector('#loader-view h1');
-                if (welcomeMsg) {
-                    welcomeMsg.style.display = 'none';
-                }
-            }, 1000); // 1 second ka timer
+      // Add click listeners to all cards with data-url
+      const cards = document.querySelectorAll('.card[data-url]');
+      cards.forEach(card => {
+        card.addEventListener('click', function(e) {
+          const url = this.getAttribute('data-url');
+          const name = this.querySelector('h3')?.textContent || 'RS App';
+          if (url) {
+            openInFrame(url, name);
+          }
         });
+      });
 
-        function openLink(url) {
-            mainView.style.display = 'none';
-            iframeView.style.display = 'block';
-            loaderView.style.display = 'flex';
-            backBtn.style.visibility = 'visible';
-            appFrame.src = url;
+      // Extra pill buttons for quick access
+      document.getElementById('openChatDirect')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        openInFrame('https://rs-181.github.io/gl', 'RS Chat (GhostLine)');
+      });
+      document.getElementById('openStoreDirect')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        openInFrame('https://rs-appstore.blogspot.com', 'RS App Store');
+      });
+      document.getElementById('openPortfolioDirect')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        openInFrame('https://rehansandhi181.blogspot.com', 'RS Portfolio');
+      });
 
-            appFrame.onload = function() {
-                loaderView.style.display = 'none';
-            };
-
-            dropdown.classList.remove('active');
+      // Optional: handle escape key to close frame
+      window.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && frameContainer.style.display === 'flex') {
+          closeFrame();
         }
+      });
 
-        function goBack() {
-            iframeView.style.display = 'none';
-            loaderView.style.display = 'none';
-            mainView.style.display = 'flex';
-            backBtn.style.visibility = 'hidden';
-            appFrame.src = '';
-            appFrame.onload = null; 
-        }
-
-        function toggleMenu() {
-            dropdown.classList.toggle('active');
-        }
-
-        window.onclick = function(event) {
-            if (!event.target.closest('.dropdown') && dropdown.classList.contains('active')) {
-                dropdown.classList.remove('active');
-            }
-        }
-    </script>
+      // If user clicks outside iframe? better to use close button.
+      // Also reset iframe src when hidden to avoid background activity
+    })();
+  </script>
 </body>
 </html>
